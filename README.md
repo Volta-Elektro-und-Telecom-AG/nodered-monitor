@@ -6,5 +6,5 @@ bash <(curl -sL https://github.com/node-red/linux-installers/releases/latest/dow
 
 Wenn Node-Red erfolgreich installiert:
 ```
-sudo sh -c "$(curl -sL https://raw.githubusercontent.com/Volta-Elektro-und-Telecom-AG/nodered-monitor/refs/heads/main/nodered-monitor.sh)"
+curl -sL https://raw.githubusercontent.com/Volta-Elektro-und-Telecom-AG/nodered-monitor/refs/heads/main/nodered-monitor.sh | bash
 ```
