@@ -78,7 +78,7 @@ th { background: #f0f0f0; }
         <?php foreach ($topChartsFiles as $file): ?>
             <div>
                 <h3><?php echo htmlspecialchars($file); ?></h3>
-                <canvas id="chart_<?php echo md5($file); ?>" width="400" height="300"></canvas>
+                <canvas id="chart_<?php echo md5($file); ?>" width="700" height="300"></canvas>
             </div>
         <?php endforeach; ?>
     </div>
@@ -177,3 +177,4 @@ if(logSelect){
 </script>
 </body>
 </html>
+
