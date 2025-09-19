@@ -41,7 +41,7 @@ headline "Installiere Node-RED"
 sudo systemctl enable nodered.service
 success "Node-RED im autostart"
 sudo systemctl start nodered.service
-sleep 10
+sleep 5
 success "Node-RED gestartet"
 
 
@@ -61,11 +61,11 @@ curl -sL "$FLOW_URL" -o "$TMP_FILE" && success "Flow heruntergeladen"
 curl -X POST http://localhost:1880/flows \
      -H "Content-Type: application/json" \
      -d @"$TMP_FILE" && success "Flow in Node-RED importiert"
-
+sleep 5
 
 headline "Installiere Apache2"
 sudo apt install -y apache2 && success "Apache2 installiert"
-
+sleep 5
 
 headline "Erstelle Monitoring-Verzeichnis & Dateien"
 sudo mkdir -p /var/www/html/monitoring/pings
@@ -85,7 +85,7 @@ curl -sL "https://raw.githubusercontent.com/Volta-Elektro-und-Telecom-AG/nodered
 sudo chmod 777 /dev/vcio
 
 success "Monitoring-Ordner und Dateien erstellt"
-
+sleep 5
 
 headline "Installation erfolgreich abgeschlossen 🎉"
 echo "${GREEN}Node-RED läuft unter: http://localhost:1880${NC}"
