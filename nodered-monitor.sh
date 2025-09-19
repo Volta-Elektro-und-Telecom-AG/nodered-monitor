@@ -33,9 +33,9 @@ sudo apt-get update && success "Update abgeschlossen"
 sudo apt-get upgrade -y && success "Upgrade abgeschlossen"
 
 headline "Installiere Node-RED"
-sudo apt-get install -y git curl build-essential
-bash <(curl -sL https://github.com/node-red/linux-installers/releases/latest/download/update-nodejs-and-nodered-deb) --yes
-sleep 10
+#sudo apt-get install -y git curl build-essential
+#bash <(curl -sL https://github.com/node-red/linux-installers/releases/latest/download/update-nodejs-and-nodered-deb) --yes
+#sleep 10
 sudo systemctl enable nodered.service
 sudo systemctl start nodered.service
 sleep 5
