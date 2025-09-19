@@ -81,6 +81,9 @@ run_cmd "curl -sL \"https://raw.githubusercontent.com/Volta-Elektro-und-Telecom-
 run_cmd "curl -sL \"https://raw.githubusercontent.com/Volta-Elektro-und-Telecom-AG/nodered-monitor/refs/heads/main/volta_logo.webp\" -o /var/www/html/monitoring/pings/volta_logo.webp" "volta_logo.webp heruntergeladen"
 run_cmd "curl -sL \"https://raw.githubusercontent.com/Volta-Elektro-und-Telecom-AG/nodered-monitor/refs/heads/main/monitoring/index.php\" -o /var/www/html/monitoring/index.php" "monitoring/index.php heruntergeladen"
 
+run_cmd "sudo rm /var/www/html/index.php"
+run_cmd "curl -sL \"https://raw.githubusercontent.com/Volta-Elektro-und-Telecom-AG/nodered-monitor/refs/heads/main/index.php\" -o /var/www/html/index.php" "index.php heruntergeladen"
+
 run_cmd "sudo chmod 777 /dev/vcio" "Rechte für /dev/vcio gesetzt"
 
 headline "Installation abgeschlossen 🎉"
