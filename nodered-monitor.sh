@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 # Farben mit tput (Fallback auf leer)
 GREEN=$(tput setaf 2 || true)
@@ -29,7 +28,7 @@ error() {
   printf "%s❌ %s%s\n" "$RED" "$1" "$NC"
 }
 
-# Wrapper um Kommandos auszuführen
+# Wrapper um Commands auszuführen
 run_cmd() {
   local cmd="$1"
   local msg="$2"
@@ -47,7 +46,7 @@ run_cmd() {
 
 headline "System Update & Upgrade"
 run_cmd "sudo apt-get update -y" "Update abgeschlossen"
-run_cmd "sudo apt-get upgrade -y" "Upgrade abgeschlossen"
+run_cmd "sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade -yq" "Upgrade abgeschlossen"
 
 headline "Installiere Node-RED"
 #run_cmd "sudo apt-get install -y git curl build-essential" "Build-Tools installiert"
@@ -81,8 +80,8 @@ run_cmd "curl -sL \"https://raw.githubusercontent.com/Volta-Elektro-und-Telecom-
 run_cmd "curl -sL \"https://raw.githubusercontent.com/Volta-Elektro-und-Telecom-AG/nodered-monitor/refs/heads/main/volta_logo.webp\" -o /var/www/html/monitoring/pings/volta_logo.webp" "volta_logo.webp heruntergeladen"
 run_cmd "curl -sL \"https://raw.githubusercontent.com/Volta-Elektro-und-Telecom-AG/nodered-monitor/refs/heads/main/monitoring/index.php\" -o /var/www/html/monitoring/index.php" "monitoring/index.php heruntergeladen"
 
-run_cmd "sudo rm /var/www/html/index.html"
-run_cmd "curl -sL \"https://raw.githubusercontent.com/Volta-Elektro-und-Telecom-AG/nodered-monitor/refs/heads/main/index.php" -o /var/www/html/index.php" "index.php heruntergeladen"
+run_cmd "sudo rm -f /var/www/html/index.html" "Standard-index.html entfernt"
+run_cmd "curl -sL \"https://raw.githubusercontent.com/Volta-Elektro-und-Telecom-AG/nodered-monitor/refs/heads/main/index.php\" -o /var/www/html/index.php" "Root index.php heruntergeladen"
 
 run_cmd "sudo chmod 777 /dev/vcio" "Rechte für /dev/vcio gesetzt"
 
