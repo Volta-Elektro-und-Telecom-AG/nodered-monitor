@@ -59,7 +59,7 @@ headline "Installiere Node-RED Paletten"
 run_cmd "cd \"$HOME/.node-red\" && npm install node-red-node-ping && npm install node-red-dashboard && npm install node-red-contrib-moment" "Node-RED Paletten installiert"
 
 headline "Importiere Flow"
-FLOW_URL="https://raw.githubusercontent.com/Volta-Elektro-und-Telecom-AG/nodered-monitor/refs/heads/main/flows.json"
+FLOW_URL="https://raw.githubusercontent.com/Volta-Elektro-und-Telecom-AG/nodered-monitor/main/flows.json"
 TMP_FILE="/tmp/flows.json"
 run_cmd "curl -sL \"$FLOW_URL\" -o \"$TMP_FILE\"" "Flow heruntergeladen"
 run_cmd "curl -X POST http://localhost:1880/flows -H \"Content-Type: application/json\" -d @\"$TMP_FILE\"" "Flow in Node-RED importiert"
@@ -75,13 +75,13 @@ run_cmd "sudo touch /var/www/html/monitoring/pings/pingfails.json" "pingfails.js
 run_cmd "sudo chmod 777 /var/www/html/monitoring/pings" "Rechte für Monitoring-Verzeichnis gesetzt"
 run_cmd "sudo chmod 777 /var/www/html/monitoring/pings/pingfails.json" "Rechte für pingfails.json gesetzt"
 
-run_cmd "curl -sL \"https://raw.githubusercontent.com/Volta-Elektro-und-Telecom-AG/nodered-monitor/refs/heads/main/monitoring/pings/index.php\" -o /var/www/html/monitoring/pings/index.php" "index.php heruntergeladen"
-run_cmd "curl -sL \"https://raw.githubusercontent.com/Volta-Elektro-und-Telecom-AG/nodered-monitor/refs/heads/main/monitoring/pings/data.php\" -o /var/www/html/monitoring/pings/data.php" "data.php heruntergeladen"
-run_cmd "curl -sL \"https://raw.githubusercontent.com/Volta-Elektro-und-Telecom-AG/nodered-monitor/refs/heads/main/volta_logo.webp\" -o /var/www/html/monitoring/pings/volta_logo.webp" "volta_logo.webp heruntergeladen"
-run_cmd "curl -sL \"https://raw.githubusercontent.com/Volta-Elektro-und-Telecom-AG/nodered-monitor/refs/heads/main/monitoring/index.php\" -o /var/www/html/monitoring/index.php" "monitoring/index.php heruntergeladen"
+run_cmd "curl -sL \"https://raw.githubusercontent.com/Volta-Elektro-und-Telecom-AG/nodered-monitor/main/monitoring/pings/index.php\" -o /var/www/html/monitoring/pings/index.php" "index.php heruntergeladen"
+run_cmd "curl -sL \"https://raw.githubusercontent.com/Volta-Elektro-und-Telecom-AG/nodered-monitor/main/monitoring/pings/data.php\" -o /var/www/html/monitoring/pings/data.php" "data.php heruntergeladen"
+run_cmd "curl -sL \"https://raw.githubusercontent.com/Volta-Elektro-und-Telecom-AG/nodered-monitor/main/volta_logo.webp\" -o /var/www/html/monitoring/pings/volta_logo.webp" "volta_logo.webp heruntergeladen"
+run_cmd "curl -sL \"https://raw.githubusercontent.com/Volta-Elektro-und-Telecom-AG/nodered-monitor/main/monitoring/index.php\" -o /var/www/html/monitoring/index.php" "monitoring/index.php heruntergeladen"
 
 run_cmd "sudo rm -f /var/www/html/index.html" "Standard-index.html entfernt"
-run_cmd "curl -sL \"https://raw.githubusercontent.com/Volta-Elektro-und-Telecom-AG/nodered-monitor/refs/heads/main/index.php\" -o /var/www/html/index.php" "Root index.php heruntergeladen"
+run_cmd "curl -sL \"https://raw.githubusercontent.com/Volta-Elektro-und-Telecom-AG/nodered-monitor/main/index.php\" -o /var/www/html/index.php" "Root index.php heruntergeladen"
 
 run_cmd "sudo chmod 777 /dev/vcio" "Rechte für /dev/vcio gesetzt"
 
