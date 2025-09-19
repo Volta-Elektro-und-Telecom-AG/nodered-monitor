@@ -1,15 +1,16 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
-# Farben
-GREEN='\033[0;32m'
-CYAN='\033[0;36m'
-YELLOW='\033[1;33m'
-RED='\033[0;31m'
-NC='\033[0m'
+# Farben mit tput (fällt auf leer zurück falls Terminal keine Farben kann)
+GREEN=$(tput setaf 2 || true)
+CYAN=$(tput setaf 6 || true)
+YELLOW=$(tput setaf 3 || true)
+RED=$(tput setaf 1 || true)
+BOLD=$(tput bold || true)
+NC=$(tput sgr0 || true)
 
 headline() {
-  printf "\n%s==============================\n" "$CYAN"
+  printf "\n%s==============================\n" "${CYAN}${BOLD}"
   printf "▶ %s\n" "$1"
   printf "==============================%s\n\n" "$NC"
 }
