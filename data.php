@@ -70,13 +70,14 @@ $dayEnd   = strtotime($dateStr . ' 23:59:59');
 
 // Sonderfälle 24h/7d
 if (preg_match('/24h\.log$/', $file)) {
-    $dayStart = time() - 24*3600;
-    $dayEnd   = time();
+    $dayStart = 0;
+    $dayEnd   = time(); 
 }
 if (preg_match('/7d\.log$/', $file)) {
-    $dayStart = time() - 7*24*3600;
-    $dayEnd   = time();
+    $dayStart = 0; 
+    $dayEnd   = time();  
 }
+
 
 $result = [];
 if (isset($data[0]['series']) && isset($data[0]['data'])) {
