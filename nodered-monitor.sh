@@ -56,7 +56,12 @@ run_cmd "sudo systemctl start nodered.service" "Node-RED gestartet"
 sleep 5
 
 headline "Installiere Node-RED Paletten"
-run_cmd "cd \"$HOME/.node-red\" && npm install node-red-node-ping && npm install node-red-dashboard && npm install node-red-contrib-moment" "Node-RED Paletten installiert"
+cd "$HOME/.node-red" || FAILED_CMDS+=("Cannot cd to $HOME/.node-red")
+
+run_cmd "npm install node-red-node-ping" "node-red-node-ping installiert"
+run_cmd "npm install node-red-dashboard" "node-red-dashboard installiert"
+run_cmd "npm install node-red-contrib-moment" "node-red-contrib-moment installiert"
+
 
 headline "Importiere Flow"
 FLOW_URL="https://raw.githubusercontent.com/Volta-Elektro-und-Telecom-AG/nodered-monitor/main/flows.json"
