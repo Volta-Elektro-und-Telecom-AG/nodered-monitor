@@ -3,13 +3,13 @@ set -e  # stop on error
 
 # Farben für die Ausgabe
 GREEN='\033[0;32m'
-BLUE='\033[0;34m'
+CYAN='\033[0;36m'
 YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 headline() {
-  echo -e "\n${BLUE}=============================="
+  echo -e "\n${CYAN}=============================="
   echo -e "▶ $1"
   echo -e "==============================${NC}\n"
 }
