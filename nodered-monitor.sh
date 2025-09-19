@@ -9,21 +9,21 @@ RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 headline() {
-  echo -e "\n${CYAN}=============================="
-  echo -e "▶ $1"
-  echo -e "==============================${NC}\n"
+  echo "\n${CYAN}=============================="
+  echo "▶ $1"
+  echo "==============================${NC}\n"
 }
 
 success() {
-  echo -e "${GREEN}✅ $1${NC}"
+  echo "${GREEN}✅ $1${NC}"
 }
 
 warn() {
-  echo -e "${YELLOW}⚠️  $1${NC}"
+  echo "${YELLOW}⚠️  $1${NC}"
 }
 
 error() {
-  echo -e "${RED}❌ $1${NC}"
+  echo "${RED}❌ $1${NC}"
 }
 
 
@@ -37,11 +37,12 @@ sudo apt-get upgrade -y && success "Upgrade abgeschlossen"
 headline "Installiere Node-RED"
 # sudo apt-get install -y git curl build-essential
 # bash <(curl -sL https://github.com/node-red/linux-installers/releases/latest/download/update-nodejs-and-nodered-deb) -y
-sleep 10
+# sleep 10
 sudo systemctl enable nodered.service
+success "Node-RED im autostart"
 sudo systemctl start nodered.service
 sleep 10
-success "Node-RED installiert und gestartet"
+success "Node-RED gestartet"
 
 
 headline "Installiere Node-RED Paletten"
@@ -87,5 +88,5 @@ success "Monitoring-Ordner und Dateien erstellt"
 
 
 headline "Installation erfolgreich abgeschlossen 🎉"
-echo -e "${GREEN}Node-RED läuft unter: http://localhost:1880${NC}"
-echo -e "${GREEN}Monitoring erreichbar unter: http://localhost/monitoring/${NC}"
+echo "${GREEN}Node-RED läuft unter: http://localhost:1880${NC}"
+echo "${GREEN}Monitoring erreichbar unter: http://localhost/monitoring/${NC}"
