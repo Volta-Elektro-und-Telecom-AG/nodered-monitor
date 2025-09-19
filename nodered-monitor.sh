@@ -59,7 +59,7 @@ headline "Installiere Node-RED Paletten"
 run_cmd "cd \"$HOME/.node-red\" && npm install node-red-node-ping node-red-dashboard node-red-contrib-moment" "Node-RED Paletten installiert"
 
 headline "Importiere Flow"
-FLOW_URL="https://raw.githubusercontent.com/Volta-Elektro-und-Telecom-AG/nodered-monitor/refs/heads/main/flow.json"
+FLOW_URL="https://raw.githubusercontent.com/Volta-Elektro-und-Telecom-AG/nodered-monitor/refs/heads/main/flows.json"
 TMP_FILE="/tmp/flows.json"
 run_cmd "curl -sL \"$FLOW_URL\" -o \"$TMP_FILE\"" "Flow heruntergeladen"
 run_cmd "curl -X POST http://localhost:1880/flows -H \"Content-Type: application/json\" -d @\"$TMP_FILE\"" "Flow in Node-RED importiert"
