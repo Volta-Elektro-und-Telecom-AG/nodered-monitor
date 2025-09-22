@@ -50,7 +50,7 @@ $dirs = array_filter(glob('*'), 'is_dir');
 </head>
 <body>
     <header>
-        <img src="/volta_logo.webp" alt="Volta Logo">
+        <img src="/monitoring/pings/volta_logo.webp" alt="Volta Elektro und Telecom AG">
     </header>
     <div class="container">
         <h1>Volta Dienste </h1>
