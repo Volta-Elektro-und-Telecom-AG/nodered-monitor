@@ -91,6 +91,8 @@ run_cmd "sudo curl -sL \"https://raw.githubusercontent.com/Volta-Elektro-und-Tel
 
 run_cmd "sudo chmod 777 /dev/vcio" "Rechte für /dev/vcio gesetzt"
 
+run_cmd "sudo systemctl restart nodered.service" "nodered wurde neugestartet"
+
 headline "Installation abgeschlossen 🎉"
 printf "%sNode-RED läuft unter: http://localhost:1880%s\n" "$GREEN" "$NC"
 printf "%sMonitoring erreichbar unter: http://localhost/monitoring/%s\n" "$GREEN" "$NC"
