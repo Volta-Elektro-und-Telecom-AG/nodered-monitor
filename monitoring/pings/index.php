@@ -58,8 +58,8 @@ th { background: #f0f0f0; }
 
 <div class="container">
     <div class="status">
-        <?php if ($pingfails): ?>
-            <h2>Status Pingfails</h2>
+        <?php if ($pingfails):
+            echo '<h2>Status Pingfails '. file_get_contents( "seit.txt" ) . ' </h2>' ?>
             <table>
                 <tr><th>Host</th><th>Fehlerzahl</th></tr>
                 <?php foreach ($pingfails as $host => $fails): ?>
@@ -177,4 +177,5 @@ if(logSelect){
 </script>
 </body>
 </html>
+
 
