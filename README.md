@@ -2,6 +2,7 @@
 
 
 <h1>Installation</h1>
+
 Zuerst Linux updaten
 ```
 sudo apt update && sudo apt upgrade
