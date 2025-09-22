@@ -73,6 +73,7 @@ $dirs = array_filter(glob('*'), 'is_dir');
                     <a href="<?= "$dir/index.php" ?>"><?= ucfirst($dir) ?></a>
                 <?php endif; ?>
             <?php endforeach; ?>
+            <a href="https://github.com/Volta-Elektro-und-Telecom-AG/nodered-monitor/wiki">Wiki</a>
         </nav>
     </header>
 
