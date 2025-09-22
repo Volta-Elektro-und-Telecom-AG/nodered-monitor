@@ -1,3 +1,7 @@
+<a href="https://github.com/Volta-Elektro-und-Telecom-AG/nodered-monitor/wiki">Documentation/Wiki</a>
+
+
+<h1>Installation</h1>
 Zuerst Linux updaten
 ```
 sudo apt update && sudo apt upgrade
