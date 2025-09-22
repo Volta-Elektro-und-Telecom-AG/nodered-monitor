@@ -58,9 +58,9 @@ sleep 5
 headline "Installiere Node-RED Paletten"
 cd "$HOME/.node-red" || FAILED_CMDS+=("Cannot cd to $HOME/.node-red")
 
-run_cmd "npm install node-red-node-ping" "node-red-node-ping installiert"
-run_cmd "npm install node-red-dashboard" "node-red-dashboard installiert"
-run_cmd "npm install node-red-contrib-moment" "node-red-contrib-moment installiert"
+run_cmd "sudo npm install node-red-node-ping" "node-red-node-ping installiert"
+run_cmd "sudo npm install node-red-dashboard" "node-red-dashboard installiert"
+run_cmd "sudo npm install node-red-contrib-moment" "node-red-contrib-moment installiert"
 
 
 headline "Importiere Flow"
@@ -79,6 +79,7 @@ run_cmd "sudo mkdir -p /var/www/html/monitoring/pings" "Monitoring-Verzeichnis e
 run_cmd "sudo touch /var/www/html/monitoring/pings/pingfails.json" "pingfails.json erstellt"
 run_cmd "sudo chmod 777 /var/www/html/monitoring/pings" "Rechte für Monitoring-Verzeichnis gesetzt"
 run_cmd "sudo chmod 777 /var/www/html/monitoring/pings/pingfails.json" "Rechte für pingfails.json gesetzt"
+run_cmd "echo "{}" /var/www/html/monitoring/pings/pingfails.json" "{} zu json File hinzugefügt"
 
 run_cmd "sudo curl -sL \"https://raw.githubusercontent.com/Volta-Elektro-und-Telecom-AG/nodered-monitor/main/monitoring/pings/index.php\" -o /var/www/html/monitoring/pings/index.php" "index.php heruntergeladen"
 run_cmd "sudo curl -sL \"https://raw.githubusercontent.com/Volta-Elektro-und-Telecom-AG/nodered-monitor/main/monitoring/pings/data.php\" -o /var/www/html/monitoring/pings/data.php" "data.php heruntergeladen"
