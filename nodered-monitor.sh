@@ -94,8 +94,10 @@ run_cmd "sudo chmod 777 /dev/vcio" "Rechte für /dev/vcio gesetzt"
 run_cmd "sudo systemctl restart nodered.service" "nodered wurde neugestartet"
 
 headline "Installation abgeschlossen 🎉"
-printf "%sNode-RED läuft unter: http://localhost:1880%s\n" "$GREEN" "$NC"
-printf "%sMonitoring erreichbar unter: http://localhost/monitoring/%s\n" "$GREEN" "$NC"
+for ip in $(hostname -I); do
+    printf "%sNode-RED läuft unter: http://%s:1880%s\n" "$YELLOW" "$ip" "$NC"
+    printf "%sMonitoring erreichbar unter: http://%s/monitoring/%s\n" "$YELLOW" "$ip" "$NC"
+done
 
 # --- Zusammenfassung ---
 if [ ${#FAILED_CMDS[@]} -gt 0 ]; then
