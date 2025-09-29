@@ -12,7 +12,7 @@ FAILED_CMDS=()
 
 headline() {
   printf "\n%s==============================\n" "${CYAN}${BOLD}"
-  printf "▶ %s\n" "$1"
+  printf "🔘 %s\n" "$1"
   printf "==============================%s\n\n" "$NC"
 }
 
@@ -97,10 +97,10 @@ headline "Installation abgeschlossen 🎉"
 sleep 2
 
 printf "%sNode-RED läuft unter:%s\n" "$GREEN" "$NC"
-printf "%slocalhost:1880%s\n" "$YELLOW" "$NC"
+printf "%slocalhost:1880%s\n" "$CYAN" "$NC"
 
 for ip in $(hostname -I); do
-    printf "%s%s:1880%s\n" "$YELLOW" "$ip" "$NC"
+    printf "%s%s:1880%s\n" "$CYAN" "$ip" "$NC"
 done
 
 
