@@ -75,12 +75,11 @@ th { background: #f0f0f0; }
     </div>
 
     <div class="topcharts">
-        <?php foreach ($topChartsFiles as $file): ?>
-            <div>
-                <h3><?php echo htmlspecialchars($file); ?></h3>
-                <canvas id="chart_<?php echo md5($file); ?>" width="700" height="300"></canvas>
-            </div>
-        <?php endforeach; ?>
+        <?php $hostname = $_SERVER['SERVER_NAME']; ?>
+        <iframe 
+            src="http://<?php echo $hostname; ?>:1880/ui/#!/1?embed=true"
+            style="width:80%;height:50vh;border:none;overflow:hidden;">
+        </iframe>
     </div>
 </div>
 
@@ -128,15 +127,6 @@ function renderChart(canvasId, cfgs) {
 let currentCharts = {};
 const today = document.getElementById('dateSelect').value;
 
-// Topcharts direkt laden
-<?php foreach ($topChartsFiles as $file): ?>
-fetch('data.php?file=<?php echo urlencode($file); ?>&date=' + today)
-    .then(res=>res.json())
-    .then(data=>{
-        currentCharts["<?php echo md5($file); ?>"] = renderChart("chart_<?php echo md5($file); ?>", data);
-    });
-<?php endforeach; ?>
-
 // Datepicker Event
 document.getElementById('dateSelect').addEventListener('change', function() {
     const dateStr = this.value;
@@ -177,5 +167,6 @@ if(logSelect){
 </script>
 </body>
 </html>
+
 
 
