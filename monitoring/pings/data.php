@@ -2,6 +2,10 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
+ini_set('memory_limit', '1024M');
+set_time_limit(0);                // Kein Zeitlimit
+ignore_user_abort(true);           // Keep running if browser disconnects
+
 // Zeitzone auf UTC+2
 date_default_timezone_set("Europe/Berlin");
 
@@ -29,15 +33,24 @@ $palette = ['#e6194b','#3cb44b','#ffe119','#4363d8','#f58231','#911eb4',
             '#000075','#808080'];
 $colorIndex = 0;
 
-// Funktion: Logdatei einlesen (zeilenweise)
+// Funktion: Logdatei einlesen (zeilenweise, schonend für Pi)
 function loadLogFile($path) {
-    $handle = fopen($path, "r");
+    $handle = fopen($path, "rb");
     if (!$handle) return null;
-    $merged = null;
 
-    while (($line = fgets($handle)) !== false) {
+    // Disable read buffering to prevent PHP from reading the whole file at once
+    stream_set_read_buffer($handle, 0);
+
+    $merged = null;
+    $lineNumber = 0;
+
+    while (!feof($handle)) {
+        $line = fgets($handle);
+        if ($line === false) break;
+
         $line = trim($line);
         if ($line === '') continue;
+
         $decoded = @json_decode($line, true);
         if ($decoded === null) continue;
 
@@ -50,6 +63,12 @@ function loadLogFile($path) {
                     $merged['data'][$i] = array_merge($merged['data'][$i], $seriesData);
                 }
             }
+        }
+
+        // CPU Überhitzungsschutz alle 100 Zeilen
+        if (++$lineNumber % 100 === 0) {
+            gc_collect_cycles();
+            usleep(50000);
         }
     }
 
@@ -77,7 +96,6 @@ if (preg_match('/7d\.log$/', $file)) {
     $dayStart = 0; 
     $dayEnd   = time();  
 }
-
 
 $result = [];
 if (isset($data[0]['series']) && isset($data[0]['data'])) {
@@ -137,7 +155,7 @@ if (isset($data[0]['series']) && isset($data[0]['data'])) {
             }
         }
 
-        // Letzter buff Punkt hinzufügen
+        // Letzter buffer Punkt hinzufügen
         if ($bufferTime !== null) {
             $points[] = ['time' => $bufferTime, 'value' => $bufferY];
         }
